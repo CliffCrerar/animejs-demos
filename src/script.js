@@ -1,17 +1,15 @@
-
+let {lasKey} = {lastKey: null};
+let initDisabled = true;
 const el = document.getElementById('block');
-const dirBtn = document.getElementById('changeDirection');
+const dirBtn = document.getElementById('animationOneRev');
 const demoHeading = document.querySelector('#demoHeading');
+const movingBar = document.getElementById('moving-bar');
+const clickHandlers = {
+    animationOneRev,
+    animationOne
+}
 
-const hdg = anime({
-    targets: '#demoHeading',
-    autoplay: false,
-    opacity: {
-        value: 1,
-        duration: 10000,
-        delay: 5000
-    },
-});
+dirBtn.value = 'Forward';
 
 function toggleButton(btn, state = null) {
     state = state == null ? btn.disabled : state;
@@ -36,6 +34,16 @@ const oneStyle = {
 
 applyStyle(oneStyle, el)
 
+const hdg = anime({
+    targets: '#demoHeading',
+    autoplay: false,
+    opacity: {
+        value: 1,
+        duration: 10000,
+        delay: 5000
+    },
+});
+
 const one = anime({
     targets: oneStyle,
     translateX: '50vw',
@@ -50,7 +58,7 @@ const one = anime({
     }
 })
 
-initDisabled = true;
+
 function animationOne() {
     console.log('one.reversed: ', one.reversed);
     initDisabled && toggleButton(dirBtn);
@@ -58,7 +66,7 @@ function animationOne() {
     one.play()
 }
 
-dirBtn.value = 'Forward';
+
 function animationOneRev() {
     if (one.reversed) {
         dirBtn.value = 'Forward';
@@ -116,41 +124,45 @@ const bounceThree = anime({
 
 const flexObj = { left: '0%', right: '100%' }
 
-const movingBar = document.getElementById('moving-bar')
+
+
 const move = anime({
     targets: flexObj,
     autoplay: false,
     left: '100%',
     right: '0%',
-    duration: 10000,
+    // duration: 1000,
     easing: 'linear',
     update: () => {
         movingBar.setAttribute('style', `left:${flexObj.left};right:${flexObj.right}`)
     }
 })
-const reverse = false;
-document.addEventListener('keydown', function (ev) {
-    if (ev.key === 'ArrowRight') {
-        if(move.reversed){
-                    move.reverse();}
-            // move.play();
-        // } else {
-            move.play();
-        // }
-    } else if (ev.key === 'ArrowLeft') {
-        if (!move.reversed) { 
-            move.reverse();}
-            // move.play();
-        // } else { 
-            move.play();
-        //  };
-    }
 
+document.addEventListener('keydown', function (ev) {
+    if (ev.key+'keydown' !== lasKey) {
+        lastKey = ev.key+'keydown';
+        console.log('run');
+        if (ev.key === 'ArrowRight') {
+            move.play();
+            move.reversed && move.reverse();
+        } else if (ev.key === 'ArrowLeft') {
+            move.play();
+            !move.reversed && move.reverse();
+        }
+    }
 })
 document.addEventListener('keyup', function (ev) {
+    
     if (ev.key = 'ArrowRight') {
         move.pause()
     } else if (ev.keu === 'ArrowLeft') {
         move.pause()
     }
+    lasKey = ev.key+'keyup'
+})
+
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('click', function (ev) {
+        clickHandlers[ev.target.id]();
+    })
 })
