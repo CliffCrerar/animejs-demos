@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeJS Demo</title>
+    <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="./node_modules/skeleton-css/css/skeleton.css">
+    <style>
+        html {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body,
+        html {
+            position: relative;
+            width: 100vw !important;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: gainsboro;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-self: center;
+            padding: 0 10px;
+        }
+
+        input[disabled=true] {
+            color: #909090;
+        }
+
+        section {
+            position: relative;
+            display: block;
+            padding: 0 100px 0 100px;
+        }
+
+        #intro {
+            padding: 0;
+            height: 100vh;
+        }
+
+        hr {
+            position: relative;
+            width: 100%;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        li {
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        img {
+            position: relative;
+            display: block;
+            height: auto;
+            max-width: 100vw;
+            margin: auto;
+        }
+
+        #demoHeading {
+            opacity: 0;
+            text-align: center;
+        }
+
+        .bounceContainer {
+            position: relative;
+            display: flex;
+            height: 80vh;
+            justify-content: space-around;
+        }
+
+        #bounce {
+            /* background: rgb(228, 228, 228) */
+        }
+
+        .ball {
+            background: red;
+        }
+
+        .ball div {
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            bottom: 0;
+            border-radius: 50%;
+        }
+
+        .ball-zero {
+            background: red;
+        }
+
+        .ball-one {
+            background: yellow;
+        }
+
+        .ball-two {
+            background: green;
+        }
+
+        footer {
+            height: 40vh;
+            background: rgb(39, 39, 39)
+        }
+
+        .moving-bar-container {
+            display: flex;
+            background: rgb(219, 219, 219);
+            height: 30px;
+        }
+
+        .moving-bar {
+            display: flex;
+            position: relative;
+            left:0;
+        }
+
+        .moving-bar-center{
+            position: relative;
+            background: orange;
+            width: 300px;
+            height: 100%;
+        }
+
+        .edge {
+            position: relative;
+            width: 30px;
+            /* background: green; */
+            overflow: hidden;
+
+        }
+
+        .edge.left {
+            margin-left: -10px;
+        }
+
+        .edge.right {
+            margin-right: -10px;
+        }
+
+        .edge-arrow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(69, 92, 23);
+            /* transform-origin: ; */
+            transform: rotate(45deg)
+        }
+
+        .left .edge-arrow {
+            right: -60%;
+        }
+
+        .right .edge-arrow {
+            left: -60%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav">
+            <h4>Anime.js Demo</h4>
+            <ul>
+                <li>
+                    <a href="#blockToBall">Block to Ball</a>
+                </li>
+                <li>
+                    <a href="#blockToBall">Bounce</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="intro">
+        <img
+            src="https://raw.githubusercontent.com/juliangarnier/anime/master/documentation/assets/img/animejs-v3-logo-animation.gif">
+        <h1 id="demoHeading">Demo</h1>
+    </section>
+
+    <section id="blockToBall">
+        <h2>Floating Block to Ball</h2>
+        <div id="block" class="block"></div><br>
+        <hr>
+        <input type="button" onclick="animationOne()" value="Run">
+        <input type="button" id="changeDirection" onclick="animationOneRev()" value="forward">
+        <hr>
+    </section>
+
+    <section id="bounce">
+        <h2>Bounce</h2>
+        <hr>
+        <div class="bounceContainer">
+            <div class="ball">
+                <div class="ball-zero">
+
+                </div>
+            </div>
+            <div class="ball">
+                <div class="ball-one"></div>
+            </div>
+            <div class="ball">
+                <div class="ball-two">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    <section>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <h1>Move on Key</h1>
+            <p>Press left or right cursor</p>
+        </div>
+        <hr>
+        <div class="moving-bar-container">
+            <div id="moving-bar" class="moving-bar">
+                <div class="edge left">
+                    <div class="edge-arrow"></div>
+                </div>
+                <div class="moving-bar-center"></div>
+                <div class="edge right">
+                    <div class="edge-arrow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <hr>
+    </footer>
+
+    <script src="node_modules/animejs/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
