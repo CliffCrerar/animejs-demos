@@ -1,5 +1,4 @@
 
-
 const el = document.getElementById('block');
 const dirBtn = document.getElementById('changeDirection');
 const demoHeading = document.querySelector('#demoHeading');

@@ -1,0 +1,161 @@
+html {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body,
+html {
+    position: relative;
+    width: 100vw !important;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    background: gainsboro;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-self: center;
+    padding: 0 10px;
+}
+
+input[disabled=true] {
+    color: #909090;
+}
+
+section {
+    position: relative;
+    display: block;
+    padding: 0 100px 0 100px;
+}
+
+#intro {
+    padding: 0;
+    height: 100vh;
+}
+
+hr {
+    position: relative;
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    flex-direction: row;
+}
+
+li {
+    padding: 0 20px;
+    margin: 0;
+}
+
+img {
+    position: relative;
+    display: block;
+    height: auto;
+    max-width: 100vw;
+    margin: auto;
+}
+
+#demoHeading {
+    opacity: 0;
+    text-align: center;
+}
+
+.bounceContainer {
+    position: relative;
+    display: flex;
+    height: 80vh;
+    justify-content: space-around;
+}
+
+#bounce {
+    /* background: rgb(228, 228, 228) */
+}
+
+.ball {
+    background: red;
+}
+
+.ball div {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    bottom: 0;
+    border-radius: 50%;
+}
+
+.ball-zero {
+    background: red;
+}
+
+.ball-one {
+    background: yellow;
+}
+
+.ball-two {
+    background: green;
+}
+
+footer {
+    height: 40vh;
+    background: rgb(39, 39, 39)
+}
+
+.moving-bar-container {
+    display: flex;
+    background: rgb(219, 219, 219);
+    height: 30px;
+}
+
+.moving-bar {
+    display: flex;
+    position: relative;
+    left:0;
+}
+
+.moving-bar-center{
+    position: relative;
+    background: orange;
+    width: 300px;
+    height: 100%;
+}
+
+.edge {
+    position: relative;
+    width: 30px;
+    /* background: green; */
+    overflow: hidden;
+
+}
+
+.edge.left {
+    margin-left: -10px;
+}
+
+.edge.right {
+    margin-right: -10px;
+}
+
+.edge-arrow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(69, 92, 23);
+    /* transform-origin: ; */
+    transform: rotate(45deg)
+}
+
+.left .edge-arrow {
+    right: -60%;
+}
+
+.right .edge-arrow {
+    left: -60%;
+}
