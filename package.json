@@ -14,8 +14,8 @@
     "animejs": "^3.2.0",
     "express": "^4.17.1",
     "skeleton-css": "^2.0.4",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "devDependencies": {
     "css-loader": "^4.2.1",
